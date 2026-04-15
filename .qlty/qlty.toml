@@ -23,24 +23,23 @@ mode = "comment"
 name = "default"
 default = true
 
-# --- Language linters ---
-
+# Config stored in .qlty/configs/ to keep repo root clean.
+# Uses .eslintrc.cjs (explicit CJS) because got is an ESM project ("type":"module").
 [[plugin]]
 name = "eslint"
 mode = "comment"
-config_files = [".qlty/configs/.eslintrc.js"]
+config_files = [".qlty/configs/.eslintrc.cjs"]
 affects_cache = ["tsconfig.json"]
 extra_packages = [
-  "@typescript-eslint/parser@8.33.0",
-  "@typescript-eslint/eslint-plugin@8.33.0",
+  "@typescript-eslint/parser@7.18.0",
+  "@typescript-eslint/eslint-plugin@7.18.0",
 ]
 
+# skip_upstream prevents tsc from type-checking all upstream imports — only analyzes the diff.
 [[plugin]]
 name = "tsc"
 mode = "comment"
 skip_upstream = true
-
-# --- Security scanners ---
 
 [[plugin]]
 name = "trufflehog"
@@ -49,8 +48,6 @@ mode = "block"
 [[plugin]]
 name = "osv-scanner"
 mode = "block"
-
-# --- Cross-language tools ---
 
 [[plugin]]
 name = "markdownlint"
