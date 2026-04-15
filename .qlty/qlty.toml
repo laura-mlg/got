@@ -1,0 +1,65 @@
+# This configuration was generated with the setup-qlty-toml skill.
+# For reference: https://docs.qlty.sh/qlty-toml
+config_version = "0"
+
+exclude_patterns = [
+  "**/node_modules/**",
+  "**/dist/**",
+  "**/*.d.ts",
+  "**/benchmark/**",
+  "**/documentation/examples/**",
+]
+
+test_patterns = [
+  "**/test/**",
+  "**/*.test.*",
+]
+
+[smells]
+mode = "comment"
+
+# Required — points to the built-in Qlty plugin registry.
+[[source]]
+name = "default"
+default = true
+
+# --- Language linters ---
+
+[[plugin]]
+name = "eslint"
+mode = "comment"
+config_files = [".qlty/configs/.eslintrc.js"]
+affects_cache = ["tsconfig.json"]
+extra_packages = [
+  "@typescript-eslint/parser@8.33.0",
+  "@typescript-eslint/eslint-plugin@8.33.0",
+]
+
+[[plugin]]
+name = "tsc"
+mode = "comment"
+skip_upstream = true
+
+# --- Security scanners ---
+
+[[plugin]]
+name = "trufflehog"
+mode = "block"
+
+[[plugin]]
+name = "osv-scanner"
+mode = "block"
+
+# --- Cross-language tools ---
+
+[[plugin]]
+name = "markdownlint"
+mode = "comment"
+
+[[plugin]]
+name = "actionlint"
+mode = "comment"
+
+[[plugin]]
+name = "yamllint"
+mode = "comment"
