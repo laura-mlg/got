@@ -1,0 +1,41 @@
+config_version = "0"
+
+exclude_patterns = [
+  "**/node_modules/**",
+  "**/dist/**",
+  "**/*.d.ts",
+]
+
+test_patterns = [
+  "**/*.test.*",
+  "**/*.spec.*",
+  "**/test/**",
+]
+
+[smells]
+mode = "comment"
+
+[[source]]
+name = "default"
+default = true
+
+# got uses xo (eslint wrapper) — no separate .eslintrc; xo bundles its own eslint
+[[plugin]]
+name = "prettier"
+mode = "comment"
+
+[[plugin]]
+name = "trufflehog"
+mode = "block"
+
+[[plugin]]
+name = "osv-scanner"
+mode = "block"
+
+[[plugin]]
+name = "markdownlint"
+mode = "comment"
+
+[[plugin]]
+name = "actionlint"
+mode = "comment"
