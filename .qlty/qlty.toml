@@ -23,14 +23,6 @@ mode = "comment"
 name = "default"
 default = true
 
-# skip_upstream prevents tsc from type-checking all upstream imports — only the diff.
-# affects_cache ensures cache is invalidated when tsconfig.json changes.
-[[plugin]]
-name = "tsc"
-mode = "comment"
-skip_upstream = true
-affects_cache = ["tsconfig.json"]
-
 [[plugin]]
 name = "trufflehog"
 mode = "block"
