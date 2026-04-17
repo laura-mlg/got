@@ -19,11 +19,7 @@ mode = "comment"
 name = "default"
 default = true
 
-# got uses xo (eslint wrapper) — no .eslintrc present; tsc handles type checking
-[[plugin]]
-name = "tsc"
-mode = "comment"
-
+# got uses xo (eslint wrapper) — no separate .eslintrc; xo bundles its own eslint
 [[plugin]]
 name = "prettier"
 mode = "comment"
